@@ -55,7 +55,7 @@ class _MealDetailsScreenState extends State<MealDetailsScreen> {
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 15.0),
               child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
                   Text(
                     textAlign: TextAlign.start,
@@ -98,6 +98,11 @@ class _MealDetailsScreenState extends State<MealDetailsScreen> {
                 ],
               ),
             ),
+            // Container(
+            //   height: 500.0,
+            //   width: double.infinity,
+            //   color: Colors.red,
+            // )
           ],
         ),
       ),
