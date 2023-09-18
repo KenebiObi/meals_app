@@ -31,12 +31,18 @@ class MealItem extends StatelessWidget {
         onTap: () => onSelectMeal(meal),
         child: Stack(
           children: [
-            FadeInImage(
-              height: 330.0,
-              placeholder: MemoryImage(kTransparentImage),
-              image: NetworkImage(meal.imageUrl),
-              fit: BoxFit.cover,
-              width: double.infinity,
+            Hero(
+              // this widget can be used to animate items during
+              // navigation and must have the same tag as the widget beign
+              // animated from on the other screen
+              tag: meal.id,
+              child: FadeInImage(
+                height: 330.0,
+                placeholder: MemoryImage(kTransparentImage),
+                image: NetworkImage(meal.imageUrl),
+                fit: BoxFit.cover,
+                width: double.infinity,
+              ),
             ),
             Positioned(
               bottom: 0,

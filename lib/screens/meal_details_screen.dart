@@ -37,10 +37,21 @@ class MealDetailsScreen extends ConsumerWidget {
                 ),
               );
             },
-            icon: isFavorite
-                ? const Icon(Icons.star)
-                : const Icon(Icons.star_border),
-          ),
+            icon: AnimatedSwitcher(
+              // this type of animation is an inplicit
+              // animation,  an inbuilt type of animation that can be used and
+              // customized to the developers style
+              duration: const Duration(milliseconds: 300),
+              transitionBuilder: (child, animation) => RotationTransition(
+                turns: Tween(begin: 0.9, end: 1.0).animate(animation),
+                child: child,
+              ),
+              child: Icon(
+                isFavorite ? Icons.star : Icons.star_border,
+                key: ValueKey(isFavorite),
+              ),
+            ),
+          )
         ],
       ),
       body: SingleChildScrollView(
@@ -53,12 +64,18 @@ class MealDetailsScreen extends ConsumerWidget {
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(10.0),
                 ),
-                child: FadeInImage(
-                  placeholder: MemoryImage(kTransparentImage),
-                  image: NetworkImage(meal.imageUrl),
-                  fit: BoxFit.cover,
-                  height: 300.0,
-                  width: double.infinity,
+                child: Hero(
+                  // this widget can be used to animate items during
+                  // navigation and must have the same tag as the widget beign
+                  // animated from on the other screen
+                  tag: meal.id,
+                  child: FadeInImage(
+                    placeholder: MemoryImage(kTransparentImage),
+                    image: NetworkImage(meal.imageUrl),
+                    fit: BoxFit.cover,
+                    height: 300.0,
+                    width: double.infinity,
+                  ),
                 ),
               ),
             ),
