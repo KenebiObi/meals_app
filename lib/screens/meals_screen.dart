@@ -9,11 +9,9 @@ class MealsScreen extends StatelessWidget {
     super.key,
     this.title,
     required this.meals,
-    required this.onToggleFavoriteMeal,
   });
   final String? title;
   final List<Meal> meals;
-  final void Function(Meal meal) onToggleFavoriteMeal;
 
   void selectMeal(BuildContext context, Meal meal) {
     Navigator.push(
@@ -21,7 +19,6 @@ class MealsScreen extends StatelessWidget {
       MaterialPageRoute(
         builder: (context) => MealDetailsScreen(
           meal: meal,
-          onToggleFavoriteMealDetail: onToggleFavoriteMeal,
         ),
       ),
     );
